@@ -8,34 +8,62 @@
     xmlns:controls="using:FluentOpenHab.Controls"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <CollectionViewSource x:Name="Collection"
+                              IsSourceGrouped="true" 
+                              ItemsPath="Items"
+                              Source="{Binding Groups}" />
+    </Page.Resources>
+
     <Grid Background="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}">
         <Pivot x:Name="rootPivot" Title="openHAB">
             <PivotItem Header="Our home">
                 <Grid Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush }"
                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <controls:VariableSizedWrapGrid x:Name="VariableGridView" ItemsSource="{Binding Items}"
+                    <controls:VariableSizedWrapGrid x:Name="VariableGridView"
+                                                    ItemsSource="{Binding Source={StaticResource Collection}}"
                                                     Margin="10"
-                                                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                    ScrollViewer.HorizontalScrollMode="Disabled"
+                                                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                    ScrollViewer.VerticalScrollMode="Auto">
 
                         <controls:VariableSizedWrapGrid.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <VariableSizedWrapGrid Orientation="Horizontal"
-                                                       ItemHeight="150" ItemWidth="150" />
+                                <StackPanel Orientation="Vertical" />
+                                <!--<VariableSizedWrapGrid Orientation="Horizontal"
+                                                       ItemHeight="150" ItemWidth="150" />-->
                             </ItemsPanelTemplate>
                         </controls:VariableSizedWrapGrid.ItemsPanel>
                         
                         <controls:VariableSizedWrapGrid.ItemTemplate>
                             <DataTemplate x:DataType="local:OpenHabThing">
-                                <Grid VariableSizedWrapGrid.ColumnSpan="{Binding Width}"
-                                      VariableSizedWrapGrid.RowSpan="{Binding Height}"
-                                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                                      Background="LightGray"
-                                      Height="{x:Bind CalculateHeight(150)}" Width="{x:Bind CalculateWidth(150)}">
+                                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                      Background="LightGray">
                                     <TextBlock Text="{Binding Title}" Margin="10,10,0,0"
                                                VerticalAlignment="Top" HorizontalAlignment="Left" />
                                 </Grid>
                             </DataTemplate>
                         </controls:VariableSizedWrapGrid.ItemTemplate>
+
+                        <controls:VariableSizedWrapGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0">
+                                            <TextBlock Text="{Binding Name}" Foreground="Gray" FontSize="25" Margin="5" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="150" ItemHeight="150" />
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
+                            </GroupStyle>
+                        </controls:VariableSizedWrapGrid.GroupStyle>
+
                     </controls:VariableSizedWrapGrid>
                 </Grid>
             </PivotItem>

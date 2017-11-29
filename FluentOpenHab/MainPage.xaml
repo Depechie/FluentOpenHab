@@ -5,6 +5,7 @@
     xmlns:local="using:FluentOpenHab"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:FluentOpenHab.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}">
@@ -12,25 +13,25 @@
             <PivotItem Header="Our home">
                 <Grid Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush }"
                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <ItemsControl ItemsSource="{Binding Items}" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                        <ItemsControl.ItemsPanel>
+                    <controls:VariableSizedWrapGrid x:Name="VariableGridView" ItemsSource="{Binding Items}"
+                                                    Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                        <controls:VariableSizedWrapGrid.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <VariableSizedWrapGrid Orientation="Horizontal" />
+                                <VariableSizedWrapGrid Orientation="Horizontal" ItemHeight="150" ItemWidth="150" />
                             </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
+                        </controls:VariableSizedWrapGrid.ItemsPanel>
+                        <controls:VariableSizedWrapGrid.ItemTemplate>
                             <DataTemplate x:DataType="local:OpenHabThing">
-                                <Button VerticalContentAlignment="Top" HorizontalContentAlignment="Left"
-                                        VerticalAlignment="Top" HorizontalAlignment="Left"
-                                        VariableSizedWrapGrid.ColumnSpan="{Binding Width}"
+                                <Button VariableSizedWrapGrid.ColumnSpan="{Binding Width}"
                                         VariableSizedWrapGrid.RowSpan="{Binding Height}"
-                                        Height="{x:Bind CalculateHeight(150)}" Width="{x:Bind CalculateWidth(150)}"
-                                        Margin="10">
+                                        VerticalContentAlignment="Top" HorizontalContentAlignment="Left"
+                                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                        Height="{x:Bind CalculateHeight(150)}" Width="{x:Bind CalculateWidth(150)}">
                                     <TextBlock Text="{Binding Title}" Margin="10,10,0,0" />
                                 </Button>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </controls:VariableSizedWrapGrid.ItemTemplate>
+                    </controls:VariableSizedWrapGrid>
                 </Grid>
             </PivotItem>
 

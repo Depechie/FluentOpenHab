@@ -17,11 +17,12 @@ namespace FluentOpenHab
     {
         public List<OpenHabThing> Items { get; set; } = new List<OpenHabThing>()
         {
-            new OpenHabThing() { Title = "First floor", RowSpan = 2 },
-            new OpenHabThing() { Title = "Second floor", ColSpan = 2 },
-            new OpenHabThing() { Title = "Second floor" },
-            new OpenHabThing() { Title = "First floor", RowSpan = 2 },
-            new OpenHabThing() { Title = "Second floor", ColSpan = 2 }
+            new OpenHabThing() { Title = "Item 1", ColSpan = 2, RowSpan = 2 },
+            new OpenHabThing() { Title = "Item 2", ColSpan = 2 },
+            new OpenHabThing() { Title = "Item 3" },
+            new OpenHabThing() { Title = "Item 4", ColSpan = 2, RowSpan = 2 },
+            new OpenHabThing() { Title = "Item 5" },
+            new OpenHabThing() { Title = "Item 6", ColSpan = 2 }
         };
 
         public MainPage()

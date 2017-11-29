@@ -14,21 +14,26 @@
                 <Grid Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush }"
                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <controls:VariableSizedWrapGrid x:Name="VariableGridView" ItemsSource="{Binding Items}"
-                                                    Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                                    Margin="10"
+                                                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+
                         <controls:VariableSizedWrapGrid.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <VariableSizedWrapGrid Orientation="Horizontal" ItemHeight="150" ItemWidth="150" />
+                                <VariableSizedWrapGrid Orientation="Horizontal"
+                                                       ItemHeight="150" ItemWidth="150" />
                             </ItemsPanelTemplate>
                         </controls:VariableSizedWrapGrid.ItemsPanel>
+                        
                         <controls:VariableSizedWrapGrid.ItemTemplate>
                             <DataTemplate x:DataType="local:OpenHabThing">
-                                <Button VariableSizedWrapGrid.ColumnSpan="{Binding Width}"
-                                        VariableSizedWrapGrid.RowSpan="{Binding Height}"
-                                        VerticalContentAlignment="Top" HorizontalContentAlignment="Left"
-                                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                                        Height="{x:Bind CalculateHeight(150)}" Width="{x:Bind CalculateWidth(150)}">
-                                    <TextBlock Text="{Binding Title}" Margin="10,10,0,0" />
-                                </Button>
+                                <Grid VariableSizedWrapGrid.ColumnSpan="{Binding Width}"
+                                      VariableSizedWrapGrid.RowSpan="{Binding Height}"
+                                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                      Background="LightGray"
+                                      Height="{x:Bind CalculateHeight(150)}" Width="{x:Bind CalculateWidth(150)}">
+                                    <TextBlock Text="{Binding Title}" Margin="10,10,0,0"
+                                               VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                </Grid>
                             </DataTemplate>
                         </controls:VariableSizedWrapGrid.ItemTemplate>
                     </controls:VariableSizedWrapGrid>

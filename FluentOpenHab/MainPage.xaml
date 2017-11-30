@@ -11,7 +11,7 @@
     <Page.Resources>
         <CollectionViewSource x:Name="Collection"
                               IsSourceGrouped="true" 
-                              ItemsPath="Items"
+                              ItemsPath="Children"
                               Source="{Binding Groups}" />
     </Page.Resources>
 
@@ -23,6 +23,7 @@
                     <controls:VariableSizedWrapGrid x:Name="VariableGridView"
                                                     ItemContainerStyle="{StaticResource NonSelectBorderGridViewItemStyle}"
                                                     ItemsSource="{Binding Source={StaticResource Collection}}"
+                                                    ItemTemplateSelector="{StaticResource WidgetTemplateSelector}"
                                                     Margin="10"
                                                     HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
                                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -33,12 +34,10 @@
                         <controls:VariableSizedWrapGrid.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical" />
-                                <!--<VariableSizedWrapGrid Orientation="Horizontal"
-                                                       ItemHeight="150" ItemWidth="150" />-->
                             </ItemsPanelTemplate>
                         </controls:VariableSizedWrapGrid.ItemsPanel>
                         
-                        <controls:VariableSizedWrapGrid.ItemTemplate>
+                        <!--<controls:VariableSizedWrapGrid.ItemTemplate>
                             <DataTemplate x:DataType="local:OpenHabThing">
                                 <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                                       Background="LightGray">
@@ -46,14 +45,14 @@
                                                VerticalAlignment="Top" HorizontalAlignment="Left" />
                                 </Grid>
                             </DataTemplate>
-                        </controls:VariableSizedWrapGrid.ItemTemplate>
+                        </controls:VariableSizedWrapGrid.ItemTemplate>-->
 
                         <controls:VariableSizedWrapGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid Margin="0">
-                                            <TextBlock Text="{Binding Name}" Foreground="Gray" FontSize="25" Margin="5" />
+                                            <TextBlock Text="{Binding Label}" Foreground="Gray" FontSize="25" Margin="5" />
                                         </Grid>
                                     </DataTemplate>
                                 </GroupStyle.HeaderTemplate>

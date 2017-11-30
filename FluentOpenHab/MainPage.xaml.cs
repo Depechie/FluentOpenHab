@@ -1,60 +1,59 @@
-﻿using System.Collections.Generic;
+﻿using FluentOpenHab.Models;
+using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 
 namespace FluentOpenHab
 {
-    public class OpenHabGroup
-    {
-        public string Name { get; set; }
-        public List<OpenHabThing> Items { get; set; }
-    }
-
-    public class OpenHabThing
-    {
-        public string Title { get; set; }
-        public int ColSpan { get; set; } = 1;
-        public int RowSpan { get; set; } = 1;
-
-        public double CalculateHeight(int height) => height * RowSpan;
-        public double CalculateWidth(int width) => width * ColSpan;
-    }
-
     public sealed partial class MainPage : Page
     {
-        public List<OpenHabGroup> Groups { get; set; } = new List<OpenHabGroup>();
+        public List<OpenHABWidget> Groups { get; set; } = new List<OpenHABWidget>();
 
         public MainPage()
         {
             this.InitializeComponent();
 
-            Groups.Add(new OpenHabGroup()
+            Groups.Add(new OpenHABWidget()
             {
-                Name = "Group 1",
-                Items = new List<OpenHabThing>()
+                Label = "Group 1",
+                Children = new List<OpenHABWidget>()
                 {
-                    new OpenHabThing() { Title = "Item 1", ColSpan = 2, RowSpan = 2 },
-                    new OpenHabThing() { Title = "Item 2", ColSpan = 2 },
-                    new OpenHabThing() { Title = "Item 3" },
-                    new OpenHabThing() { Title = "Item 4", ColSpan = 2, RowSpan = 2 },
-                    new OpenHabThing() { Title = "Item 5" },
-                    new OpenHabThing() { Title = "Item 6", ColSpan = 2 }
+                    new OpenHABWidget() { Label = "Item 1", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2, RowSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 2", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 3", Type = WidgetTypeEnum.Mapview.ToString() },
+                    new OpenHABWidget() { Label = "Item 4", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2, RowSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 5", Type = WidgetTypeEnum.Mapview.ToString() },
+                    new OpenHABWidget() { Label = "Item 6", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2 }
+                }
+            });
+/*
+            Groups.Add(new OpenHABWidget()
+            {
+                Label = "Group 2",
+                Children = new List<OpenHABWidget>()
+                {
+                    new OpenHABWidget() { Label = "Item 1" },
+                    new OpenHABWidget() { Label = "Item 2", ColSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 3", ColSpan = 2, RowSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 4" },
+                    new OpenHABWidget() { Label = "Item 5", ColSpan = 2, RowSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 6", ColSpan = 2 }
                 }
             });
 
-            Groups.Add(new OpenHabGroup()
+            Groups.Add(new OpenHABWidget()
             {
-                Name = "Group 2",
-                Items = new List<OpenHabThing>()
+                Label = "Group 3",
+                Children = new List<OpenHABWidget>()
                 {
-                    new OpenHabThing() { Title = "Item 1", ColSpan = 2, RowSpan = 2 },
-                    new OpenHabThing() { Title = "Item 2", ColSpan = 2 },
-                    new OpenHabThing() { Title = "Item 3" },
-                    new OpenHabThing() { Title = "Item 4", ColSpan = 2, RowSpan = 2 },
-                    new OpenHabThing() { Title = "Item 5" },
-                    new OpenHabThing() { Title = "Item 6", ColSpan = 2 }
+                    new OpenHABWidget() { Label = "Item 1", ColSpan = 2, RowSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 2", ColSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 3", ColSpan = 2, RowSpan = 2 },
+                    new OpenHABWidget() { Label = "Item 4" },
+                    new OpenHABWidget() { Label = "Item 5" },
+                    new OpenHABWidget() { Label = "Item 6", ColSpan = 2 }
                 }
             });
-
+*/
             this.DataContext = this;
         }
     }

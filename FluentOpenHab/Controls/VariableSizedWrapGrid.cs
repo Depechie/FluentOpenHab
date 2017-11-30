@@ -22,6 +22,7 @@ namespace FluentOpenHab.Controls
             }
             finally
             {
+                element.SetValue(PaddingProperty, new Thickness(0, 0, 5, 5));
                 element.SetValue(VerticalContentAlignmentProperty, VerticalAlignment.Stretch);
                 element.SetValue(HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch);
                 base.PrepareContainerForItemOverride(element, item);

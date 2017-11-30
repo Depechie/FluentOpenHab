@@ -21,6 +21,7 @@
                 <Grid Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush }"
                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <controls:VariableSizedWrapGrid x:Name="VariableGridView"
+                                                    ItemContainerStyle="{StaticResource NonSelectBorderGridViewItemStyle}"
                                                     ItemsSource="{Binding Source={StaticResource Collection}}"
                                                     Margin="10"
                                                     HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"

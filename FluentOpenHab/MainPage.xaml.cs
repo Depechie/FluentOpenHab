@@ -18,11 +18,9 @@ namespace FluentOpenHab
                 Children = new List<OpenHABWidget>()
                 {
                     new OpenHABWidget() { Label = "Item 1", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2, RowSpan = 2 },
-                    new OpenHABWidget() { Label = "Item 2", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2 },
-                    new OpenHABWidget() { Label = "Item 3", Type = WidgetTypeEnum.Mapview.ToString() },
-                    new OpenHABWidget() { Label = "Item 4", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2, RowSpan = 2 },
-                    new OpenHABWidget() { Label = "Item 5", Type = WidgetTypeEnum.Mapview.ToString() },
-                    new OpenHABWidget() { Label = "Item 6", Type = WidgetTypeEnum.Mapview.ToString(), ColSpan = 2 }
+                    new OpenHABWidget() { Label = "Item 2", Type = WidgetTypeEnum.Webview.ToString() },
+                    new OpenHABWidget() { Label = "Item 3", Type = WidgetTypeEnum.Switch.ToString(), ColSpan = 2},
+                    new OpenHABWidget() { Label = "Item 4", Type = WidgetTypeEnum.Switch.ToString(), ColSpan = 2}
                 }
             });
 /*

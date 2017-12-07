@@ -6,7 +6,9 @@
     xmlns:maps="using:Windows.UI.Xaml.Controls.Maps">
 
     <selectors:WidgetTemplateSelector x:Key="WidgetTemplateSelector"
-                                               MapViewTemplate="{StaticResource MapViewTemplate}" />
+                                      MapViewTemplate="{StaticResource MapViewTemplate}"
+                                      WebViewTemplate="{StaticResource WebViewTemplate}"
+                                      SwitchTemplate="{StaticResource SwitchTemplate}"/>
 
     <!--<selectors:WidgetTemplateSelector x:Key="WidgetTemplateSelector"
                                                ChartTemplate="{StaticResource ChartTemplate}"
@@ -27,6 +29,41 @@
 
     <DataTemplate x:Key="MapViewTemplate">
         <maps:MapControl x:Name="MapView" ZoomLevel="10" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="WebViewTemplate">
+        <!--<WebView x:Name="WebView" Source="ms-appx-web:///Resources///iframe.html" />-->
+        <WebView x:Name="WebView" Source="https://www.google.com" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="SwitchTemplate">
+        <Grid Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <RelativePanel Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <!--<FontIcon FontFamily="Material Design Icons" Glyph="&#xF3ED;" />-->
+                <FontIcon x:Name="Icon"
+                          FontFamily="Material Design Icons" Glyph="&#xF3EE;"
+                          FontSize="42"
+                          Margin="20,0,0,0"
+                          RelativePanel.AlignLeftWithPanel="True"
+                          RelativePanel.AlignTopWithPanel="True"
+                          RelativePanel.AlignBottomWithPanel="True"
+                          RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+                <TextBlock Text="Groundfloor stairs"
+                           TextWrapping="WrapWholeWords"
+                           Margin="10,0,10,0"
+                           RelativePanel.RightOf="Icon"
+                           RelativePanel.AlignVerticalCenterWith="Icon"
+                           />
+            </RelativePanel>
+
+            <ToggleSwitch Grid.Column="1" />
+        </Grid>
     </DataTemplate>
 
 </ResourceDictionary>
